@@ -1,0 +1,226 @@
+/* 全局变量 */
+:root {
+  --primary-color: #1e88e5;
+  --primary-light: #42a5f5;
+  --primary-dark: #0d47a1;
+  --primary-hover: #1976d2;
+  --primary-active: #1565c0;
+  --text-color: #333;
+  --text-light: #606266;
+  --text-lighter: #909399;
+  --background-color: #f5f7fa;
+  --card-background: #ffffff;
+  --hover-color: #bbdefb;
+  --active-color: #2196f3;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+/* 全局重置 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Element Plus 组件样式覆盖 */
+
+/* 按钮样式 */
+.el-button {
+  border-radius: 6px;
+  transition: all var(--transition-speed);
+}
+
+.el-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.el-button:active {
+  transform: translateY(1px);
+}
+
+.el-button--primary {
+  background-color: var(--primary-color);
+}
+
+.el-button--primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.el-button--primary:active {
+  background-color: var(--primary-active);
+}
+
+/* 卡片样式 */
+.el-card {
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed);
+  border: none;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.el-card.is-hover-shadow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.el-card__header {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.el-card__body {
+  padding: 20px;
+}
+
+/* 标签样式 */
+.el-tag {
+  border-radius: 4px;
+  transition: all var(--transition-speed);
+}
+
+.el-tag--primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* 进度条样式 */
+.el-progress-bar__inner {
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 表格样式 */
+.el-table {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.el-table th.el-table__cell {
+  background-color: rgba(30, 136, 229, 0.05);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+  background-color: rgba(30, 136, 229, 0.08);
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell {
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+/* 表单样式 */
+.el-input__inner,
+.el-textarea__inner {
+  border-radius: 6px;
+  transition: all var(--transition-speed);
+}
+
+.el-input__inner:focus,
+.el-textarea__inner:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.2);
+}
+
+/* 标签页样式 */
+.el-tabs__item {
+  transition: all var(--transition-speed);
+}
+
+.el-tabs__item.is-active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.el-tabs__active-bar {
+  background-color: var(--primary-color);
+  height: 3px;
+  border-radius: 3px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.el-tabs__item:hover {
+  color: var(--primary-hover);
+}
+
+/* 上传组件样式 */
+.el-upload {
+  transition: all var(--transition-speed);
+}
+
+.el-upload:hover {
+  transform: translateY(-2px);
+}
+
+/* 单选按钮样式 */
+.el-radio__input.is-checked .el-radio__inner {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.el-radio__input.is-checked + .el-radio__label {
+  color: var(--primary-color);
+}
+
+/* 菜单样式 */
+.el-menu-item.is-active {
+  color: var(--primary-color);
+  background-color: rgba(30, 136, 229, 0.1);
+}
+
+.el-menu-item:hover {
+  background-color: rgba(30, 136, 229, 0.05);
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 动画效果 */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 1.5s infinite;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .el-card__body {
+    padding: 16px;
+  }
+  
+  .el-form-item {
+    margin-bottom: 16px;
+  }
+} 
