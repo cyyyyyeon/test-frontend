@@ -42,6 +42,16 @@ export const identityTest = (data) => {
   return api.post('/identity/predict', data)
 }
 
+// 获取测试数据接口
+export const getTestData = (params) => {
+  return api.get('/identity/test-data', { params })
+}
+
+// 获取测试数据集信息接口
+export const getTestDataInfo = () => {
+  return api.get('/identity/test-data/info')
+}
+
 // 系统资源监控接口（模拟）
 export const getSystemMetrics = () => {
   // 这里模拟获取系统资源使用情况
