@@ -1,0 +1,15 @@
+test_name,user1_face,user2_face,expected_result
+有效-同一用户常规测试,1_1.png,1_2.png,same_person
+有效-同一用户中段ID,5_3.png,5_5.png,same_person
+有效-同一用户高段ID,10_1.png,10_4.png,same_person
+有效-同一图片自我对比,3_1.png,3_1.png,same_person
+有效-同一用户边界ID,9_2.png,9_4.png,same_person
+有效-不同用户常规测试,1_1.png,2_1.png,different_person
+有效-不同用户边界ID测试,9_3.png,10_3.png,different_person
+无效-用户1图片不存在,1_99.png,2_1.png,error
+无效-用户2图片不存在,3_2.png,user_x_1.png,error
+无效-双方图片均不存在,99_1.png,98_1.png,error
+无效-用户2输入为空,4_1.png,,error
+无效-用户1输入为空,,6_1.png,error
+无效-输入格式错误,user1.jpg,5_2.png,error
+无效-输入内容安全检查,' OR 1=1;--.png,7_3.png,error
