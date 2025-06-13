@@ -23,15 +23,9 @@ api.interceptors.response.use(
     return response.data
   },
   error => {
-    // 构造一个标准化的错误对象
-    const errorObj = {
-      status: 'error',
-      error: error.response?.data?.error || error.message || '未知错误'
-    };
-
-    console.error('API错误:', errorObj);
-    return Promise.reject(errorObj);
-  })
+    return Promise.reject(error)
+  }
+)
 
 // 融合身份验证接口
 export const fusionTest = (data) => {
@@ -48,62 +42,19 @@ export const identityTest = (data) => {
   return api.post('/identity/predict', data)
 }
 
-/**
- * 系统资源监控接口
- * 
- * 在实际生产环境中，后端应该实现以下功能：
- * 1. CPU使用率监控：
- *    - Linux: 可以使用 psutil 库获取 CPU 使用情况
- *    - 计算方法：后端每次API调用时记录处理前后的CPU使用率差值
- *    - 示例代码：
- *      ```python
- *      import psutil
- *      
- *      def get_cpu_usage():
- *          return psutil.cpu_percent(interval=0.5)
- *      ```
- * 
- * 2. GPU使用率监控：
- *    - 需要使用 nvidia-smi 命令或 pynvml 库获取 NVIDIA GPU 使用情况
- *    - 对于深度学习模型，可以记录模型推理时的 GPU 使用峰值
- *    - 示例代码：
- *      ```python
- *      import pynvml
- *      
- *      def get_gpu_usage():
- *          pynvml.nvmlInit()
- *          handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # 第一个GPU
- *          info = pynvml.nvmlDeviceGetUtilizationRates(handle)
- *          return info.gpu  # GPU使用率百分比
- *      ```
- * 
- * 3. 内存使用监控：
- *    - 可以使用 psutil 库获取内存使用情况
- *    - 计算方法：记录API处理过程中的内存使用峰值
- *    - 示例代码：
- *      ```python
- *      import psutil
- *      
- *      def get_memory_usage():
- *          return psutil.virtual_memory().percent
- *      ```
- * 
- * 后端API实现示例：
- * ```python
- * @app.route('/system/metrics', methods=['GET'])
- * def system_metrics():
- *     return {
- *         'cpu': get_cpu_usage(),
- *         'gpu': get_gpu_usage(),
- *         'memory': get_memory_usage()
- *     }
- * ```
- */
+// 获取测试数据接口
+export const getTestData = (params) => {
+  return api.get('/identity/test-data', { params })
+}
+
+// 获取测试数据集信息接口
+export const getTestDataInfo = () => {
+  return api.get('/identity/test-data/info')
+}
+
+// 系统资源监控接口（模拟）
 export const getSystemMetrics = () => {
-  // 实际生产环境中应该调用后端API获取真实系统资源使用情况
-  // return api.get('/system/metrics')
-  
-  // 当前为模拟数据，仅用于演示
+  // 这里模拟获取系统资源使用情况
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
@@ -115,4 +66,4 @@ export const getSystemMetrics = () => {
   })
 }
 
-export default api
+export default api 
