@@ -23,9 +23,15 @@ api.interceptors.response.use(
     return response.data
   },
   error => {
-    return Promise.reject(error)
-  }
-)
+    // 构造一个标准化的错误对象
+    const errorObj = {
+      status: 'error',
+      error: error.response?.data?.error || error.message || '未知错误'
+    };
+
+    console.error('API错误:', errorObj);
+    return Promise.reject(errorObj);
+  })
 
 // 融合身份验证接口
 export const fusionTest = (data) => {

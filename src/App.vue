@@ -5,12 +5,14 @@
         <div class="header-content">
           <div class="logo-container">
             <div class="logo-icon">
-              <el-icon><Monitor /></el-icon>
+              <el-icon>
+                <Monitor />
+              </el-icon>
             </div>
             <h1 class="app-title">API测试平台</h1>
           </div>
           <div class="header-right">
-            <span class="system-info">系统状态: 
+            <span class="system-info">系统状态:
               <el-tag :type="systemStatus === 'online' ? 'success' : 'danger'" size="small" effect="dark">
                 {{ systemStatus === 'online' ? '在线' : '离线' }}
               </el-tag>
@@ -21,30 +23,35 @@
       <el-container>
         <el-aside width="220px" class="sidebar-container">
           <div class="sidebar-header">
-            <el-icon><Connection /></el-icon>
+            <el-icon>
+              <Connection />
+            </el-icon>
             <span>功能导航</span>
           </div>
-          <el-menu
-            router
-            :default-active="activeMenu"
-            class="el-menu-vertical"
-            background-color="#1e88e5"
-            text-color="#ffffff"
-            active-text-color="#ffffff">
+          <el-menu router :default-active="activeMenu" class="el-menu-vertical" background-color="#1e88e5"
+            text-color="#ffffff" active-text-color="#ffffff">
             <el-menu-item index="/" class="menu-item-with-hover">
-              <el-icon><Monitor /></el-icon>
-              <span>仪表盘</span>
+              <el-icon>
+                <HomeFilled />
+              </el-icon>
+              <span>首页</span>
             </el-menu-item>
             <el-menu-item index="/fusion-test" class="menu-item-with-hover">
-              <el-icon><Connection /></el-icon>
+              <el-icon>
+                <Connection />
+              </el-icon>
               <span>融合身份测试</span>
             </el-menu-item>
             <el-menu-item index="/face-viz-test" class="menu-item-with-hover">
-              <el-icon><PictureFilled /></el-icon>
-              <span>人脸相似度测试</span>
+              <el-icon>
+                <PictureFilled />
+              </el-icon>
+              <span>可解释性接口测试</span>
             </el-menu-item>
             <el-menu-item index="/identity-test" class="menu-item-with-hover">
-              <el-icon><UserFilled /></el-icon>
+              <el-icon>
+                <UserFilled />
+              </el-icon>
               <span>身份风险评估测试</span>
             </el-menu-item>
           </el-menu>

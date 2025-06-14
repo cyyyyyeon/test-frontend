@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    name: 'Dashboard',
-    component: () => import('../views/Dashboard.vue')
+    name: 'Home',
+    component: () => import('../views/Home.vue')
   },
   {
     path: '/fusion-test',
