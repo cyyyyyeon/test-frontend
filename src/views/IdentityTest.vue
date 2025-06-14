@@ -2276,10 +2276,14 @@ export default {
     
     const getTestSuccessRateStrokeDasharray = (rate) => {
       const circumference = 2 * Math.PI * 60 // r=60
+      // 当 rate 为 0 时，返回完整的圆环
+      if (rate === 0) return `${circumference} 0`
       return `${(rate / 100) * circumference} ${circumference}`
     }
     
     const getTestSuccessRateStrokeDashoffset = (rate) => {
+      // 当 rate 为 0 时，不需要偏移
+      if (rate === 0) return 0
       return 0
     }
     
