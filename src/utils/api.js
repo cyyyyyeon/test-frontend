@@ -23,9 +23,15 @@ api.interceptors.response.use(
     return response.data
   },
   error => {
-    return Promise.reject(error)
-  }
-)
+    // 构造一个标准化的错误对象
+    const errorObj = {
+      status: 'error',
+      error: error.response?.data?.error || error.message || '未知错误'
+    };
+
+    console.error('API错误:', errorObj);
+    return Promise.reject(errorObj);
+  })
 
 // 融合身份验证接口
 export const fusionTest = (data) => {
@@ -42,19 +48,12 @@ export const identityTest = (data) => {
   return api.post('/identity/predict', data)
 }
 
-// 获取测试数据接口
-export const getTestData = (params) => {
-  return api.get('/identity/test-data', { params })
-}
 
-// 获取测试数据集信息接口
-export const getTestDataInfo = () => {
-  return api.get('/identity/test-data/info')
-}
-
-// 系统资源监控接口（模拟）
 export const getSystemMetrics = () => {
-  // 这里模拟获取系统资源使用情况
+  // 实际生产环境中应该调用后端API获取真实系统资源使用情况
+  // return api.get('/system/metrics')
+  
+  // 当前为模拟数据，仅用于演示
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
@@ -66,4 +65,4 @@ export const getSystemMetrics = () => {
   })
 }
 
-export default api 
+export default api
