@@ -63,8 +63,8 @@ export const generateFusionTestCases = () => {
       "finger": `${user4Id}_${fingerId4}.jpg`
     },
     "user2": {
-      "face": `${user4Id}_${faceId5}.png`,
-      "voice": `${user5Id}_${voiceId5}.wav`,
+      "face": `${user5Id}_${faceId5}.png`,
+      "voice": `${user4Id}_${voiceId5}.wav`,
       "finger": `${user4Id}_${fingerId5}.jpg`
     }
   }
@@ -180,8 +180,8 @@ export const generateFaceVizTestCases = () => {
   const [fingerId1, fingerId2] = getTwoDifferentFileIds();
 
   const samePersonCase = {
-    "image1_name": `${user1Id}_${faceId1}.png`,
-    "image2_name": `${user1Id}_${faceId2}.png`
+    "user1_face": `${user1Id}_${faceId1}.png`,
+    "user2_face": `${user1Id}_${faceId2}.png`
   }
 
   // 2. 不同人的多模态数据（应该匹配失败）
@@ -194,25 +194,25 @@ export const generateFaceVizTestCases = () => {
   const [user2Id, user3Id] = getTwoDifferentUserIds();
 
   const differentPersonCase = {
-    "image1_name": `${user2Id}_${Math.floor(Math.random() * 5) + 1}.png`,
-    "image2_name": `${user3Id}_${Math.floor(Math.random() * 5) + 1}.png`
+    "user1_face": `${user2Id}_${Math.floor(Math.random() * 5) + 1}.png`,
+    "user2_face": `${user3Id}_${Math.floor(Math.random() * 5) + 1}.png`
   }
   // 3.文件不存在测试用例
   const fileNotExistCase = {
-    "image1_name": "13_1.png",
-    "image2_name": "9_6.png"
+    "user1_face": "13_1.png",
+    "user2_face": "9_6.png"
   }
 
   // 4.错误文件格式测试用例
   const wrongFormatCase = {
-    "image1_name": "1_2.txt", // 错误格式
-    "image2_name": "3_4.jpg"
+    "user1_face": "1_2.txt", // 错误格式
+    "user2_face": "3_4.jpg"
   }
 
   // 5.缺少参数测试用例
   const missingParamCase = {
-    "image1_name": "1_2.png"
-    // 缺少 image2_name
+    "user1_face": "1_2.png"
+    // 缺少 user2_face
   }
 
   return [
