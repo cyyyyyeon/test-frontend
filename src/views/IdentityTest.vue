@@ -1408,7 +1408,11 @@ export default {
               timestamp: new Date().toLocaleString(),
               name: `样本 #${sample.index}`,
               request: testData,
-              response: { error: error.message || '未知错误' },
+              response: { 
+                error: error.error || error.message || '未知错误',
+                errorCode: error.errorCode,
+                originalError: error.originalError
+              },
               responseTime: endTime - startTime,
               status: 'failed',
               true_label: sample.true_label,
@@ -1492,7 +1496,11 @@ export default {
           timestamp: new Date().toLocaleString(),
           name: testName || '真实数据测试',
           request: testData,
-          response: { error: error.message || '未知错误' },
+          response: { 
+            error: error.error || error.message || '未知错误',
+            errorCode: error.errorCode,
+            originalError: error.originalError
+          },
           responseTime: endTime - startTime,
           status: 'failed',
           true_label: trueLabel
@@ -1541,7 +1549,11 @@ export default {
           timestamp: new Date().toLocaleString(),
           name: activeTab.value === 'preset' ? testCases.value[selectedTestCase.value].name : '自定义测试',
           request: testData,
-          response: { error: error.message || '未知错误' },
+          response: { 
+            error: error.error || error.message || '未知错误',
+            errorCode: error.errorCode,
+            originalError: error.originalError
+          },
           responseTime: endTime - startTime,
           status: 'failed'
         }
@@ -1601,7 +1613,11 @@ export default {
           timestamp: new Date().toLocaleString(),
           name: testName,
           request: testData,
-          response: { error: error.message || '未知错误' },
+          response: { 
+            error: error.error || error.message || '未知错误',
+            errorCode: error.errorCode,
+            originalError: error.originalError
+          },
           responseTime: endTime - startTime,
           status: 'failed',
           expectedResult: expectedResult,
@@ -1999,7 +2015,11 @@ export default {
               timestamp: new Date().toLocaleString(),
               name: `${task.dataType === 'normal' || task.dataType === 'normal-fallback' ? '正常数据' : '异常数据'} #${task.index}`,
               request: task.data,
-              response: { error: error.message || '未知错误' },
+              response: { 
+                error: error.error || error.message || '未知错误',
+                errorCode: error.errorCode,
+                originalError: error.originalError
+              },
               responseTime: endTime - startTime,
               status: 'failed',
               expectedResult: task.expectedResult,
@@ -2163,7 +2183,11 @@ export default {
           timestamp: new Date().toLocaleString(),
           name: testCase.name,
           request: testCase.data,
-          response: { error: error.message || '未知错误' },
+          response: { 
+            error: error.error || error.message || '未知错误',
+            errorCode: error.errorCode,
+            originalError: error.originalError
+          },
           responseTime: endTime - startTime,
           status: 'failed',
           expectedResult: testCase.expectedResult,

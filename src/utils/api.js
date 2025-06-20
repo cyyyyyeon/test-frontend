@@ -24,9 +24,32 @@ api.interceptors.response.use(
   },
   error => {
     // 构造一个标准化的错误对象
+    let errorMessage = '未知错误';
+    let errorCode = null;
+    
+    if (error.response?.data) {
+      const errorData = error.response.data;
+      
+      // 如果后端返回了结构化的错误信息
+      if (errorData.error && errorData.message) {
+        errorCode = errorData.error;
+        errorMessage = errorData.message;
+      } else if (errorData.error) {
+        errorMessage = errorData.error;
+      } else if (errorData.message) {
+        errorMessage = errorData.message;
+      } else if (typeof errorData === 'string') {
+        errorMessage = errorData;
+      }
+    } else if (error.message) {
+      errorMessage = error.message;
+    }
+    
     const errorObj = {
       status: 'error',
-      error: error.response?.data?.error || error.message || '未知错误'
+      error: errorMessage,
+      errorCode: errorCode,
+      originalError: error.response?.data // 保留原始错误信息
     };
 
     console.error('API错误:', errorObj);
